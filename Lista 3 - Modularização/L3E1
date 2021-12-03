@@ -1,0 +1,54 @@
+/* 
+  Autora: Thais Andreatta
+  Data: 02/10
+  Exercício 1 - Faça um procedimento que recebe as 3 notas de um aluno por parâmetro e uma letra. Se a 
+letra for ‘A’, o procedimento calcula e escreve a média aritmética das notas do aluno, se for 
+‘P’, calcula e escreve a sua média ponderada (pesos: 5, 3 e 2). Faça um programa que leia 3 
+notas de N alunos e acione o procedimento para cada aluno. (N deve ser lido do teclado).
+*/
+
+//inclui bibliotecas
+#include <stdio.h>
+//parametro que calcula a media das notas e retorna resultado
+void calculamedia(double nota1, double nota2, double nota3, char parametro)
+{
+  double media;
+  //media aritmetica
+  if (parametro == 'A' || parametro == 'a')
+  {
+    media = ((nota1 + nota2 + nota3)/3);
+    printf("A média aritmética das notas é %.2lf.\n", media);
+  }
+  //media ponderada
+  else if (parametro == 'P'|| parametro == 'p')
+  {
+    media = (((nota1*5)+(nota2*3)+(nota3*2))/10);
+    printf("A média ponderada das notas é %.2lf.\n", media);
+  }
+}
+//inicia o programa
+int main(void) {
+  //inclui variaveis
+  int alunos, contador; 
+  double nota1, nota2, nota3;
+  char parametro;
+  //requere quantidade de alunos
+  printf("Digite a quantidade de alunos: ");
+  scanf("%d", &alunos);
+  //requere parametro
+  printf("Digite o tipo de média: \n");
+  printf("\tA - média aritmética\n");
+  printf("\tP - média ponderada\n");
+  scanf(" %c", &parametro);
+  //chama a função n vezes
+  for (contador=1; contador<=alunos; contador+=1)
+  {
+    //requere notas dos alunos
+    printf("Digite as notas do aluno %d: ", contador);
+    scanf("%lf %lf %lf", &nota1, &nota2, &nota3);
+    calculamedia(nota1, nota2, nota3, parametro);
+  }
+  //encerra o programa
+  printf("Fim do programa");
+  return 0;
+}
